@@ -7,10 +7,12 @@ import { cn } from '../lib/utils';
 
 export function Footer() {
   return (
-    <footer className={cn(
-      'bg-[#1d1d1d]/80 backdrop-blur-lg',
-      'border-t border-white/5'
-    )}>
+    <footer
+      className={cn(
+        'bg-[#1d1d1d]/80 backdrop-blur-lg',
+        'border-t border-white/5'
+      )}
+    >
       <Container>
         <div className="py-20">
           <FooterTop />

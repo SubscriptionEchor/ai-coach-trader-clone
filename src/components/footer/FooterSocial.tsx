@@ -1,6 +1,8 @@
 import React from 'react';
-import { Twitter, MessageCircle, GithubIcon, LinkedinIcon } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import Twitter from '../../assets/svg/twitter.svg';
+import Telegram from '../../assets/svg/telegram.svg';
+import Discord from '../../assets/svg/discord.svg';
 
 interface FooterSocialProps {
   className?: string;
@@ -8,26 +10,21 @@ interface FooterSocialProps {
 
 export function FooterSocial({ className }: FooterSocialProps) {
   const socialLinks = [
-    { 
-      icon: Twitter, 
+    {
+      icon: Twitter,
       href: 'https://twitter.com/your-handle',
-      label: 'Follow us on Twitter'
+      label: 'Follow us on Twitter',
     },
-    { 
-      icon: MessageCircle, 
+    {
+      icon: Telegram,
       href: 'https://t.me/your-channel',
-      label: 'Join our Telegram channel'
+      label: 'Join our Telegram channel',
     },
-    { 
-      icon: LinkedinIcon, 
-      href: 'https://linkedin.com/company/your-company',
-      label: 'Connect on LinkedIn'
+    {
+      icon: Discord,
+      href: 'https://discord.com/your-server',
+      label: 'Join our Discord',
     },
-    { 
-      icon: GithubIcon, 
-      href: 'https://github.com/your-org',
-      label: 'View our GitHub'
-    }
   ];
 
   return (
@@ -48,11 +45,15 @@ export function FooterSocial({ className }: FooterSocialProps) {
             'group'
           )}
         >
-          <link.icon className={cn(
-            'w-5 h-5',
-            'transition-transform duration-200',
-            'group-hover:scale-110'
-          )} />
+          <img
+            src={link.icon}
+            alt={link.label}
+            className={cn(
+              'w-5 h-5',
+              'transition-transform duration-200',
+              'group-hover:scale-110'
+            )}
+          />
         </a>
       ))}
     </div>

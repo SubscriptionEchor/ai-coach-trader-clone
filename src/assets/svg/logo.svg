@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 289.12 289.12">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-1145.74" y1="-2090.31" x2="332.15" y2="469.48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bfe7ff"/>
+      <stop offset=".14" stop-color="#9ed2ff"/>
+      <stop offset=".44" stop-color="#4a9eff"/>
+      <stop offset=".53" stop-color="#3390ff"/>
+      <stop offset="1" stop-color="#0063eb"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect width="289.12" height="289.12" rx="56" ry="56" style="fill: url(#linear-gradient);"/>
+      <path d="M196.6,213.8c-7.11,4.1-16.21,1.67-20.32-5.44l-52.1-90.23-52.1,90.23c-4.1,7.11-13.19,9.54-20.31,5.44-7.11-4.1-9.56-13.2-5.45-20.32l64.15-111.1c2.9-5.02,8.28-7.72,13.7-7.41.27-.02.53-.03.8-.03,5.15,0,10.14,2.66,12.9,7.44l64.15,111.1c4.1,7.11,1.67,16.21-5.44,20.32Z" style="fill: #fff;"/>
+      <g>
+        <circle cx="232.78" cy="90.48" r="15.73" transform="translate(4.2 191.1) rotate(-45)" style="fill: #fff;"/>
+        <rect x="217.9" y="114.02" width="29.74" height="101.95" rx="13.7" ry="13.7" style="fill: #fff;"/>
+        <rect x="109.31" y="114.02" width="29.74" height="101.95" rx="13.7" ry="13.7" transform="translate(-40.82 289.19) rotate(-90)" style="fill: #fff;"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -8,26 +8,26 @@ import { cn } from '../lib/utils';
 const features = [
   {
     icon: Brain,
-    title: 'Neural Network Analysis',
-    description: 'Our advanced AI models process millions of data points to identify high-probability trading opportunities.',
+    title: 'Dynamic Indicator Analysis',
+    description: 'Our AI engine analyzes 300+ technical indicators in real-time, automatically adapting to market conditions and volatility.',
     gradient: 'from-blue-500 via-indigo-500 to-purple-500'
   },
   {
     icon: LineChart,
-    title: 'Real-time Market Insights',
-    description: 'Get instant market analysis and predictions powered by state-of-the-art machine learning algorithms.',
+    title: 'Neural Network Analytics',
+    description: 'Our advanced AI models analyze market data patterns and technical indicators to provide comprehensive market insights.',
     gradient: 'from-emerald-500 via-teal-500 to-cyan-500'
   },
   {
     icon: Bot,
-    title: 'Automated Trading Systems',
-    description: 'Connect your preferred exchange and let our AI bots execute trades with precision timing.',
+    title: 'Real-time Market Analysis',
+    description: 'Access real-time market data analysis powered by machine learning algorithms to help inform you.',
     gradient: 'from-orange-500 via-amber-500 to-yellow-500'
   },
   {
     icon: Zap,
-    title: 'Instant Signal Delivery',
-    description: 'Receive trading signals directly in Telegram with detailed entry, target, and stop-loss points.',
+    title: 'Trade Analysis Alerts',
+    description: 'Receive instant Telegram notifications with concise market positions, key levels.',
     gradient: 'from-pink-500 via-rose-500 to-red-500'
   }
 ];
@@ -57,7 +57,7 @@ export function Features() {
             <Brain className="w-4 h-4" />
             <span className="text-sm font-medium">POWERED BY AI</span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,12 +69,12 @@ export function Features() {
               "mb-6"
             )}
           >
-            Advanced Features for{' '}
+            Advanced Analytics Tools for{' '}
             <span className="text-transparent bg-clip-text bg-gradient-primary">
-              Smart Trading
+              Market Analysis
             </span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,8 +82,7 @@ export function Features() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-400 max-w-2xl mx-auto"
           >
-            Our platform combines cutting-edge AI technology with powerful trading tools
-            to help you make informed decisions and maximize profits.
+            Our platform integrates modern AI technology with comprehensive analysis tools to enhance your market research and decision-making process.
           </motion.p>
         </div>
 

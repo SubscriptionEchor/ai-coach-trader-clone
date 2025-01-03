@@ -6,14 +6,15 @@ import { TrustedBy } from './pricing/TrustedBy';
 import { GridBackground } from './pricing/GridBackground';
 
 const features = [
-  'Unlimited design requests',
-  'One request at a time',
-  'Average 48 hours delivery',
-  'Unlimited revisions',
-  'Unlimited brands',
-  'Invite unlimited users',
-  'Pause or cancel anytime',
-  'Custom illustrations'
+  'AI-powered market analytics',
+  'Dynamic technical analysis (300+ indicators)',
+  'Real-time market notifications via Telegram',
+  'Multi-timeframe data analysis',
+  'Advanced pattern recognition',
+  'Premium community insights',
+  'Market trend updates',
+  'Educational resources',
+  'Technical support'
 ];
 
 export function Pricing() {
@@ -36,7 +37,7 @@ export function Pricing() {
         </div>
 
         <PricingCard
-          price="$2,989"
+          price="$130"
           period="month"
           features={features}
         />

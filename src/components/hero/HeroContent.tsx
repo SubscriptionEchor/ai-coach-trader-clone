@@ -18,14 +18,14 @@ export function HeroContent() {
         transition={{ duration: 0.5 }}
         className={cn(
           "inline-flex items-center gap-3",
-          "px-5 py-2.5 rounded-full",
+          "px-4 py-2 rounded-full",
           "bg-gradient-to-r from-primary-light/10 to-transparent",
           "border border-primary-light/10",
-          "mb-12"
+          "mb-8 md:mb-12"
         )}
       >
         <Brain className="w-4 h-4 text-primary-light" />
-        <span className="text-sm font-medium tracking-wide text-primary-light/90">
+        <span className="text-xs md:text-sm font-medium tracking-wide text-primary-light/90">
           POWERED BY ARTIFICIAL INTELLIGENCE
         </span>
       </motion.div>
@@ -36,16 +36,16 @@ export function HeroContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
         className={cn(
-          "text-5xl sm:text-6xl lg:text-7xl",
+          "text-4xl sm:text-5xl lg:text-6xl xl:text-7xl",
           "font-bold tracking-tight leading-[1.1]",
-          "mb-8"
+          "mb-6 md:mb-8"
         )}
       >
         Trade Smarter with{' '}
         <span className="text-transparent bg-clip-text bg-gradient-primary">
           AI-Driven
         </span>{' '}
-        <span className="font-serif italic">Signals</span>
+        <span className="font-serif italic">Signalling Tool</span>
       </motion.h1>
 
       {/* Description */}
@@ -54,14 +54,13 @@ export function HeroContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className={cn(
-          "text-gray-400 text-lg lg:text-xl",
-          "leading-relaxed mb-12",
+          "text-base md:text-lg lg:text-xl",
+          "text-gray-400 leading-relaxed",
+          "mb-8 md:mb-12",
           "max-w-xl"
         )}
       >
-        Our advanced AI algorithms analyze market patterns 24/7 to deliver 
-        high-probability trading signals. Join thousands of traders making 
-        data-driven decisions.
+        AI-powered platform monitors market patterns and delivers real-time analysis to help inform your trading decisions. Join a community of data-focused traders using advanced analytics tools.
       </motion.p>
 
       {/* CTAs */}
@@ -69,20 +68,20 @@ export function HeroContent() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="flex flex-col sm:flex-row gap-6"
+        className="flex flex-col sm:flex-row gap-4 sm:gap-6"
       >
-        <GradientButton 
+        <GradientButton
           variant="primary"
           size="lg"
           className="min-w-[200px] group"
           onClick={() => navigate('/signup')}
         >
           <span className="flex items-center justify-center">
-            Get Started Free
+            Get Started
             <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
           </span>
         </GradientButton>
-        
+
         <TelegramButton
           onClick={() => window.open('https://t.me/your_channel', '_blank')}
           className="min-w-[200px]"

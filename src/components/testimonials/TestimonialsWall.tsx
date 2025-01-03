@@ -10,33 +10,33 @@ export function TestimonialsWall() {
   return (
     <div className="relative">
       {/* Columns Grid */}
-      <div className="grid grid-cols-2 gap-6">
-        <TestimonialColumn 
-          testimonials={column1} 
-          speed={25}
-          direction="up"
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <TestimonialColumn testimonials={column1} speed={25} direction="up" />
 
-        <TestimonialColumn 
-          testimonials={column2} 
-          className="pt-24"
+        <TestimonialColumn
+          testimonials={column2}
+          className="hidden md:block pt-24"
           speed={30}
           direction="down"
         />
       </div>
 
       {/* Top and Bottom Gradient Overlays */}
-      <div className={cn(
-        "absolute inset-x-0 top-0 h-40",
-        "bg-gradient-to-b from-black via-black/80 to-transparent",
-        "pointer-events-none z-10"
-      )} />
-      
-      <div className={cn(
-        "absolute inset-x-0 bottom-0 h-40",
-        "bg-gradient-to-t from-black via-black/80 to-transparent",
-        "pointer-events-none z-10"
-      )} />
+      <div
+        className={cn(
+          'absolute inset-x-0 top-0 h-40',
+          'bg-gradient-to-b from-black via-black/80 to-transparent',
+          'pointer-events-none z-10'
+        )}
+      />
+
+      {/* <div
+        className={cn(
+          'absolute inset-x-0 bottom-0 h-40',
+          'bg-gradient-to-t from-black via-black/80 to-transparent',
+          'pointer-events-none z-10'
+        )}
+      /> */}
     </div>
   );
 }

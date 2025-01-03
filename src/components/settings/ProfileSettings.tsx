@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { User, Camera } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { User } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 export function ProfileSettings() {
   const [formData, setFormData] = useState({
     name: 'John Doe',
     email: 'john@example.com',
-    timezone: 'UTC+0',
-    language: 'en'
   });
+
+  // Get device timezone
+  const deviceTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,31 +27,17 @@ export function ProfileSettings() {
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Avatar Upload */}
+        {/* Avatar Display */}
         <div className="flex items-center gap-6 mb-8">
-          <div className="relative">
-            <div className="w-20 h-20 rounded-full bg-primary-light/10 flex items-center justify-center">
-              <span className="text-2xl text-primary-light font-semibold">
-                {formData.name.charAt(0)}
-              </span>
-            </div>
-            <button
-              type="button"
-              className={cn(
-                'absolute -bottom-2 -right-2',
-                'p-2 rounded-full',
-                'bg-primary-light text-black',
-                'hover:bg-primary-light/90',
-                'transition-colors'
-              )}
-            >
-              <Camera className="w-4 h-4" />
-            </button>
+          <div className="w-20 h-20 rounded-full bg-primary-light/10 flex items-center justify-center">
+            <span className="text-2xl text-primary-light font-semibold">
+              {formData.name.charAt(0)}
+            </span>
           </div>
           <div>
             <h3 className="font-medium text-white mb-1">Profile Photo</h3>
             <p className="text-sm text-gray-400">
-              Upload a new profile photo
+              Your profile initial will be displayed
             </p>
           </div>
         </div>
@@ -97,42 +84,34 @@ export function ProfileSettings() {
             <label className="block text-sm font-medium text-gray-400 mb-2">
               Timezone
             </label>
-            <select
-              value={formData.timezone}
-              onChange={(e) => setFormData(prev => ({ ...prev, timezone: e.target.value }))}
+            <input
+              type="text"
+              value={deviceTimezone}
+              disabled
               className={cn(
                 'w-full px-4 py-3 rounded-lg',
                 'bg-white/5 border border-white/10',
-                'text-white',
-                'focus:outline-none focus:border-primary-light/30',
-                'transition-colors'
+                'text-gray-400',
+                'cursor-not-allowed'
               )}
-            >
-              <option value="UTC+0">UTC+0 London</option>
-              <option value="UTC+1">UTC+1 Berlin</option>
-              <option value="UTC-5">UTC-5 New York</option>
-            </select>
+            />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-400 mb-2">
               Language
             </label>
-            <select
-              value={formData.language}
-              onChange={(e) => setFormData(prev => ({ ...prev, language: e.target.value }))}
+            <input
+              type="text"
+              value="English"
+              disabled
               className={cn(
                 'w-full px-4 py-3 rounded-lg',
                 'bg-white/5 border border-white/10',
-                'text-white',
-                'focus:outline-none focus:border-primary-light/30',
-                'transition-colors'
+                'text-gray-400',
+                'cursor-not-allowed'
               )}
-            >
-              <option value="en">English</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-            </select>
+            />
           </div>
         </div>
 

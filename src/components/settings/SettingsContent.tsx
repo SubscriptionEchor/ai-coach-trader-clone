@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { ProfileSettings } from './ProfileSettings';
+import { SubscriptionSettings } from './SubscriptionSettings';
 import { NotificationSettings } from './NotificationSettings';
-import { SecuritySettings } from './SecuritySettings';
 import { cn } from '../../lib/utils';
 
 export function SettingsContent() {
@@ -13,7 +14,7 @@ export function SettingsContent() {
           Settings
         </h1>
         <p className="text-gray-400">
-          Manage your account preferences and security settings
+          Manage your account preferences and notifications
         </p>
       </div>
 
@@ -21,7 +22,7 @@ export function SettingsContent() {
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
           <ProfileSettings />
-          <SecuritySettings />
+          <SubscriptionSettings />
         </div>
 
         {/* Sidebar */}

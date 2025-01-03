@@ -14,14 +14,17 @@ export function FAQ() {
             You asked,{' '}
             <span className="font-serif italic">we answered.</span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-xl mx-auto">
             Still got questions? Feel free to reach out to
-            <br />
+            {/* <br /> */}
             our incredible support team, 7 days a week.
           </p>
         </div>
 
         <FAQList />
+        <p className="text-sm text-gray-400 mx-auto mt-10">
+          Note: For informational and educational purposes only. Users are responsible for their own research and decisions.
+        </p>
       </Container>
     </section>
   );

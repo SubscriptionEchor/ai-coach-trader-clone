@@ -3,7 +3,12 @@ import { motion } from 'framer-motion';
 import { navItems } from './NavConfig';
 import { cn } from '../../lib/utils';
 
-export function NavLinks() {
+interface NavLinksProps {
+  mobile?: boolean;
+  onItemClick?: () => void;
+}
+
+export function NavLinks({ mobile, onItemClick }: NavLinksProps) {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -15,13 +20,21 @@ export function NavLinks() {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
+
+      if (onItemClick) {
+        onItemClick();
+      }
     }
   };
 
   return (
-    <div className="flex items-center space-x-1">
+    <div
+      className={cn(
+        mobile ? 'flex flex-col space-y-2' : 'flex items-center space-x-1'
+      )}
+    >
       {navItems.map((item) => (
         <motion.button
           key={item.sectionId}
@@ -30,7 +43,8 @@ export function NavLinks() {
           className={cn(
             'px-4 py-2 rounded-full',
             'text-sm text-gray-300 hover:text-white',
-            'transition-colors duration-200'
+            'transition-colors duration-200',
+            mobile && 'w-full text-left'
           )}
         >
           {item.label}

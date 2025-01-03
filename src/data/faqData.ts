@@ -1,26 +1,22 @@
 export const faqData = [
   {
-    question: 'How do you tailor Google Ads strategies for different businesses?',
-    answer: 'We create customized Google Ads strategies based on your industry, target audience, and business goals. Our approach includes comprehensive keyword research, competitor analysis, and continuous optimization to maximize ROI.'
+    question: 'How does your AI platform work?',
+    answer: 'Our AI analyzes market data using 300+ technical indicators to identify patterns and trends in real-time.'
   },
   {
-    question: 'Whats unique about your Meta Ads approach?',
-    answer: 'Our Meta Ads strategy combines advanced targeting capabilities with creative optimization. We leverage AI-driven insights to reach your ideal audience and continuously refine campaigns for better performance.'
+    question: 'Where do I receive updates?',
+    answer: "You'll receive analysis through both our website dashboard and Telegram channel for maximum convenience."
   },
   {
-    question: 'How do you ensure effective TikTok Ads targeting and engagement?',
-    answer: 'We use data-driven audience insights and trending content analysis to create engaging TikTok campaigns. Our approach focuses on authentic, platform-native content that resonates with your target demographic.'
+    question: 'When are updates sent?',
+    answer: 'Our system monitors markets 24/7 and sends updates when significant technical patterns emerge.'
   },
   {
-    question: 'How do you choose ad formats and placements across platforms?',
-    answer: 'We select ad formats and placements based on performance data, user behavior analysis, and campaign objectives. Our multi-platform approach ensures your message reaches the right audience at the right time.'
+    question: 'Is it beginner-friendly?',
+    answer: 'Yes, We provide educational resources to help you understand the technical analysis.'
   },
   {
-    question: 'What reporting and analytics do you provide for ad campaign tracking?',
-    answer: 'Our comprehensive reporting includes real-time performance metrics, ROI analysis, and actionable insights. We provide custom dashboards and regular performance reviews to keep you informed.'
-  },
-  {
-    question: 'Do you offer ongoing ad optimization and management services?',
-    answer: 'Yes, we provide continuous campaign optimization and management services. This includes regular performance analysis, A/B testing, budget optimization, and strategic adjustments to improve results.'
+    question: 'How do I start?',
+    answer: 'Sign up for an account, connect your Telegram, and access analysis via both platforms immediately.'
   }
 ];

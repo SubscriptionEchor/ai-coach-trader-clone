@@ -1,26 +1,55 @@
-import React from 'react';
+```typescript
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { authService } from '../../lib/services/authService';
 import { cn } from '../../lib/utils';
 
 export function GoogleSignInButton() {
-  const handleGoogleSignIn = () => {
-    // TODO: Implement Google Sign-In logic
-    console.log('Google Sign-In clicked');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleGoogleSignIn = async () => {
+    setIsLoading(true);
+    try {
+      const { isNewUser } = await authService.signInWithGoogle();
+      
+      // If on sign-in page or returning user, go directly to dashboard
+      // If new user on sign-up page, show account creation success
+      if (location.pathname === '/signin' || !isNewUser) {
+        navigate('/dashboard');
+      } else {
+        navigate('/account-created');
+      }
+    } catch (error) {
+      console.error('Failed to sign in with Google:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <button
       onClick={handleGoogleSignIn}
+      disabled={isLoading}
       className={cn(
         'w-full flex items-center justify-center gap-3',
         'px-6 py-3 rounded-lg',
         'bg-white/5 hover:bg-white/10',
         'border border-white/10 hover:border-white/20',
         'text-white font-medium',
-        'transition-all duration-200'
+        'transition-all duration-200',
+        'disabled:opacity-50 disabled:cursor-not-allowed'
       )}
     >
-      <GoogleIcon />
-      <span>Continue with Google</span>
+      {isLoading ? (
+        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+      ) : (
+        <>
+          <GoogleIcon />
+          <span>Continue with Google</span>
+        </>
+      )}
     </button>
   );
 }
@@ -51,3 +80,4 @@ function GoogleIcon() {
     </svg>
   );
 }
+```

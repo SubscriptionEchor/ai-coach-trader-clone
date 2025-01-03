@@ -7,12 +7,13 @@ interface SectionWrapperProps {
   className?: string;
 }
 
-export function SectionWrapper({ id, children, className }: SectionWrapperProps) {
+export function SectionWrapper({
+  id,
+  children,
+  className,
+}: SectionWrapperProps) {
   return (
-    <section
-      id={id}
-      className={cn('py-24 md:py-32 scroll-mt-24', className)}
-    >
+    <section id={id} className={cn(' scroll-mt-24', className)}>
       {children}
     </section>
   );

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { LayoutList, Network } from 'lucide-react';
 import { cn } from '../../../lib/utils';
@@ -11,13 +10,15 @@ interface ViewToggleProps {
 export function ViewToggle({ view, onViewChange }: ViewToggleProps) {
   return (
     <div className={cn(
-      'inline-flex p-1 rounded-lg',
-      'bg-white/5 border border-white/10'
+      'flex p-1 rounded-lg',
+      'bg-white/5 border border-white/10',
+      'w-full sm:w-auto' // Full width on mobile
     )}>
       <button
         onClick={() => onViewChange('list')}
         className={cn(
-          'flex items-center gap-2 px-4 py-2 rounded-md',
+          'flex items-center justify-center gap-2',
+          'flex-1 sm:flex-initial px-4 py-2 rounded-md', // Flex-1 on mobile
           'text-sm font-medium transition-all duration-200',
           view === 'list' ? [
             'bg-primary-light/10 text-primary-light',
@@ -29,12 +30,13 @@ export function ViewToggle({ view, onViewChange }: ViewToggleProps) {
         )}
       >
         <LayoutList className="w-4 h-4" />
-        List View
+        <span>List View</span>
       </button>
       <button
         onClick={() => onViewChange('tree')}
         className={cn(
-          'flex items-center gap-2 px-4 py-2 rounded-md',
+          'flex items-center justify-center gap-2',
+          'flex-1 sm:flex-initial px-4 py-2 rounded-md', // Flex-1 on mobile
           'text-sm font-medium transition-all duration-200',
           view === 'tree' ? [
             'bg-primary-light/10 text-primary-light',
@@ -46,7 +48,7 @@ export function ViewToggle({ view, onViewChange }: ViewToggleProps) {
         )}
       >
         <Network className="w-4 h-4" />
-        Tree View
+        <span>Tree View</span>
       </button>
     </div>
   );

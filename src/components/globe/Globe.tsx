@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-
-interface Point {
-  x: number;
-  y: number;
-  z: number;
-}
+import { GlobePoints } from './GlobePoints';
+import { GlobeConnections } from './GlobeConnections';
+import { GlobeGradients } from './GlobeGradients';
+import { Point } from './types';
 
 interface GlobeProps {
   size?: number;
@@ -15,7 +13,7 @@ interface GlobeProps {
 
 export function Globe({ 
   size = 400, 
-  pointCount = 50,
+  pointCount = 80,
   className = '' 
 }: GlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -43,7 +41,9 @@ export function Globe({
       return {
         x: radius * Math.sin(phi) * Math.cos(theta),
         y: radius * Math.sin(phi) * Math.sin(theta),
-        z: radius * Math.cos(phi)
+        z: radius * Math.cos(phi),
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
       };
     });
 
@@ -60,8 +60,8 @@ export function Globe({
       
       // Update rotation with momentum
       if (autoRotate.current) {
-        angleX.current += 0.002;
-        angleY.current += 0.003;
+        angleX.current += 0.003;
+        angleY.current += 0.004;
       } else {
         angleX.current += velocityY * 0.01;
         angleY.current += velocityX * 0.01;
@@ -93,8 +93,8 @@ export function Globe({
         };
       });
 
-      // Draw connections with depth-based opacity
-      ctx.lineWidth = 1;
+      // Draw connections
+      ctx.lineWidth = isHovered ? 1.5 : 1;
       
       for (let i = 0; i < projectedPoints.length; i++) {
         const p1 = projectedPoints[i];
@@ -106,8 +106,8 @@ export function Globe({
             Math.pow(p1.y - p2.y, 2)
           );
 
-          if (distance < 100) {
-            const opacity = isHovered ? 0.3 : 0.15;
+          if (distance < 120) {
+            const opacity = isHovered ? 0.4 : 0.2;
             const depthOpacity = ((p1.z + p2.z) / 2 + size/2) / size;
             ctx.strokeStyle = `rgba(51, 144, 255, ${opacity * depthOpacity})`;
             ctx.beginPath();
@@ -118,10 +118,10 @@ export function Globe({
         }
       }
 
-      // Draw points with depth-based size and opacity
+      // Draw points
       projectedPoints.forEach(point => {
-        const pointSize = isHovered ? 2.5 : 2;
-        const opacity = isHovered ? 0.7 : 0.5;
+        const pointSize = isHovered ? 3 : 2;
+        const opacity = isHovered ? 0.8 : 0.5;
         const depthOpacity = (point.z + size/2) / size;
         
         ctx.beginPath();

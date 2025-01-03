@@ -15,7 +15,7 @@ export function LandingPage() {
       <Header />
       <main>
         <Hero />
-        
+
         <SectionWrapper id="features">
           <Features />
         </SectionWrapper>

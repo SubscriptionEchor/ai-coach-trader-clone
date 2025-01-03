@@ -1,26 +1,38 @@
-import React from 'react';
+
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Divider } from './Divider';
 import { GoogleButton } from './GoogleButton';
-import { cn } from '../../../lib/utils';
+import { authService } from '../../../lib/services/authService';
 
-interface SocialSignInProps {
-  className?: string;
-}
+export function SocialSignIn() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
 
-export function SocialSignIn({ className }: SocialSignInProps) {
   const handleGoogleSignIn = async () => {
+    setIsLoading(true);
     try {
-      // TODO: Implement Google Sign-In
-      console.log('Google Sign-In clicked');
+      await authService.signInWithGoogle();
+      
+      // If on sign-in page, go directly to dashboard
+      // Otherwise (sign-up), go to account creation success
+      if (location.pathname === '/signin') {
+        navigate('/dashboard');
+      } else {
+        navigate('/account-created');
+      }
     } catch (error) {
       console.error('Google Sign-In failed:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className={cn('space-y-6', className)}>
+    <div className="space-y-6">
       <Divider text="or continue with" />
-      <GoogleButton onClick={handleGoogleSignIn} />
+      <GoogleButton onClick={handleGoogleSignIn} isLoading={isLoading} />
     </div>
   );
 }

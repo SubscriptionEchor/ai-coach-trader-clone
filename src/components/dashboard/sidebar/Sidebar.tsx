@@ -1,9 +1,20 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Brain, LayoutDashboard, History, Settings, Users, HelpCircle, LogOut } from 'lucide-react';
+import { 
+  Brain, 
+  LayoutDashboard, 
+  History, 
+  Settings, 
+  Users, 
+  HelpCircle, 
+  LogOut,
+  Send 
+} from 'lucide-react';
 import { cn } from '../../../lib/utils';
 import { NavLink } from './NavLink';
 import { LogoutConfirmation } from '../LogoutConfirmation';
+import { Logo } from '../header/Logo';
 
 export function Sidebar() {
   const navigate = useNavigate();
@@ -23,18 +34,7 @@ export function Sidebar() {
       )}>
         {/* Logo Section */}
         <div className="p-6 border-b border-white/5">
-          <div className="flex items-center gap-3">
-            <div className={cn(
-              'p-2.5 rounded-xl',
-              'bg-gradient-to-br from-primary-light/20 to-primary-light/5',
-              'backdrop-blur-sm'
-            )}>
-              <Brain className="w-6 h-6 text-primary-light" />
-            </div>
-            <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-              Scalable
-            </span>
-          </div>
+          <Logo />
         </div>
 
         {/* Navigation */}
@@ -50,6 +50,9 @@ export function Sidebar() {
               </NavLink>
               <NavLink to="/history" icon={History}>
                 Signals History
+              </NavLink>
+              <NavLink to="/telegram" icon={Send}>
+                Connect Telegram
               </NavLink>
             </div>
           </div>

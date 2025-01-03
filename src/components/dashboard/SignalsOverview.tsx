@@ -35,6 +35,9 @@ export function SignalsOverview() {
 
   return (
     <div className="space-y-6">
+      {/* Telegram Connect Section */}
+      <TelegramConnect />
+
       {/* Header with Search and Filters */}
       <SignalsHeader
         totalSignals={filteredSignals.length}
@@ -44,9 +47,7 @@ export function SignalsOverview() {
         onPairChange={setSelectedPair}
       />
 
-      {/* Telegram Connect Section */}
-      <TelegramConnect />
-
+      
       {/* Signals Grid */}
       <div className={cn(
         'grid gap-4',

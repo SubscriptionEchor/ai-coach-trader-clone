@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { Copy, Share2 } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ShareButton } from './ShareButton';
 import { cn } from '../../lib/utils';
 
 export function ReferralCode() {
   const [copied, setCopied] = useState(false);
   const referralCode = 'TRADE123';
-  const referralLink = `https://yourplatform.com/signup?ref=${referralCode}`;
 
-  const copyToClipboard = async (text: string) => {
+  const handleCopyCode = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(referralCode);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -49,7 +49,7 @@ export function ReferralCode() {
                 {referralCode}
               </div>
               <button
-                onClick={() => copyToClipboard(referralCode)}
+                onClick={handleCopyCode}
                 className={cn(
                   'p-3 rounded-lg',
                   'bg-white/5 hover:bg-white/10',
@@ -64,22 +64,8 @@ export function ReferralCode() {
           </div>
 
           {/* Share Section */}
-          <div className="space-y-4">
-            <button
-              onClick={() => copyToClipboard(referralLink)}
-              className={cn(
-                'flex items-center justify-center gap-2',
-                'w-full md:w-auto px-6 py-3 rounded-lg',
-                'bg-primary-light/10 hover:bg-primary-light/20',
-                'border border-primary-light/20',
-                'text-primary-light font-medium',
-                'transition-all duration-200',
-                'group'
-              )}
-            >
-              <Share2 className="w-5 h-5" />
-              Share Link
-            </button>
+          <div>
+            <ShareButton referralCode={referralCode} />
           </div>
         </div>
 

@@ -1,20 +1,40 @@
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ViewToggle } from './views/ViewToggle';
 import { ReferralStats } from './ReferralStats';
 import { ReferralCode } from './ReferralCode';
-import { ReferralTreeView } from './ReferralTreeView';
 import { ReferralListView } from './views/ReferralListView';
-import { ReferralRewards } from './ReferralRewards';
+import { ReferralTreeVisualization } from './ReferralTreeVisualization';
+import { EarningsOverview } from './earnings/EarningsOverview';
+import { EarningsPreview } from './earnings/EarningsPreview';
+import { ReferralNavigation } from './ReferralNavigation';
 import { cn } from '../../lib/utils';
 
+type ViewType = 'overview' | 'tree' | 'earnings';
+
 export function ReferralOverview() {
-  const [view, setView] = useState<'list' | 'tree'>('list');
+  const [activeView, setActiveView] = useState<ViewType>('overview');
+
+  const renderContent = () => {
+    switch (activeView) {
+      case 'tree':
+        return <ReferralTreeVisualization />;
+      case 'earnings':
+        return <EarningsOverview />;
+      default:
+        return (
+          <>
+            <ReferralStats />
+            <EarningsPreview />
+            <ReferralCode />
+            <ReferralListView />
+          </>
+        );
+    }
+  };
 
   return (
     <div className="space-y-8">
-      {/* Header with View Toggle */}
+      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-semibold text-white mb-2">
@@ -24,56 +44,16 @@ export function ReferralOverview() {
             Earn rewards by inviting other traders to join our platform
           </p>
         </div>
-        <ViewToggle view={view} onViewChange={setView} />
+        <ReferralNavigation 
+          activeView={activeView} 
+          onViewChange={setActiveView} 
+        />
       </div>
 
-      {/* Stats Overview */}
-      <ReferralStats />
-
-      {/* Referral Code Section */}
-      <ReferralCode />
-
-      {/* Network View */}
-      <div className={cn(
-        'p-6 rounded-xl',
-        'bg-[#1d1d1d] border border-white/5',
-        'relative overflow-hidden'
-      )}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_400px_at_50%_300px,rgba(51,144,255,0.1),transparent)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(51,144,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,144,255,0.05)_1px,transparent_1px)] bg-[size:14px_24px]" />
-        </div>
-
-        <div className="relative">
-          <AnimatePresence mode="wait">
-            {view === 'tree' ? (
-              <motion.div
-                key="tree"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ReferralTreeView />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="list"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ReferralListView />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+      {/* Content */}
+      <div className="space-y-6">
+        {renderContent()}
       </div>
-
-      {/* Rewards History */}
-      <ReferralRewards />
     </div>
   );
 }
